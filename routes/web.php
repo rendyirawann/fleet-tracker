@@ -5,7 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TrackingController;
 use App\Http\Controllers\VehicleController;
 
-Route::redirect('/', '/login');
+Route::get('/', function () {
+    return redirect()->route('login');
+});
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
