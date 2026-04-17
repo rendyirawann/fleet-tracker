@@ -23,6 +23,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'active_vehicle_id',
     ];
 
     /**
@@ -47,4 +48,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function activeVehicle()
+{
+    return $this->belongsTo(Vehicle::class, 'active_vehicle_id');
+}
+
+public function vehicles()
+{
+    return $this->hasMany(Vehicle::class);
+}
 }
